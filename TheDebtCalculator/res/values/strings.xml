@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">The Debt Calculator</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="debt1_amount_label">Amount Owed($) :</string>
+    <string name="debt1_interest_label">Interest Rate(%) :</string>
+    <string name="debt1_monthly_label">Monthly Payment($) :</string>
+    <string name="calculate">Calculate</string>
+    <string name="save">Save Result</string>
+    <string name="title_activity_compare">Compare Activity</string>
+    <string name="title_activity_calculate">Calculate</string>
+    <string name="title_activity_calculate_fragment">Calculate</string>
+
+</resources>
