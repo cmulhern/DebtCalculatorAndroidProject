@@ -1,10 +1,10 @@
-package cj.the.deb.calculator.adapter;
+package theDebtCalculatorAdapter;
 
+import theDebtCalculator.CalculateFragment;
+import theDebtCalculator.CompareFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import cj.the.debt.calculator.CalculateFragment;
-import cj.the.debt.calculator.CompareFragment;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter{
 

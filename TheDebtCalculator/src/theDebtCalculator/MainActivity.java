@@ -1,8 +1,9 @@
-package cj.the.debt.calculator;
+package theDebtCalculator;
 
 
 
-import cj.the.deb.calculator.adapter.TabsPagerAdapter;
+import cj.the.debt.calculator.R;
+import theDebtCalculatorAdapter.TabsPagerAdapter;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;

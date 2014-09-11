@@ -1,5 +1,6 @@
-package cj.the.debt.calculator;
+package theDebtCalculator;
 
+import cj.the.debt.calculator.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
