@@ -12,5 +12,10 @@
     <string name="title_activity_compare">Compare Activity</string>
     <string name="title_activity_calculate">Calculate</string>
     <string name="title_activity_calculate_fragment">Calculate</string>
-
+    <string name="amountHeader">Amount</string>
+	<string name="interestHeader">Interest</string>
+	<string name="paymentHeader">Monthly</string>
+	<string name="interestPaidHeader">Interest Paid</string>
+	<string name="monthsToPayHeader">Months to Pay</string>
+	<string name="deleteRowHeader">Delete</string>
 </resources>

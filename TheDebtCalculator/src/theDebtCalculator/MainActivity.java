@@ -3,10 +3,12 @@ package theDebtCalculator;
 
 
 import cj.the.debt.calculator.R;
+import theDebtCalculator.CalculateFragment.DataMessenger;
 import theDebtCalculatorAdapter.TabsPagerAdapter;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
+import android.support.v4.app.FragmentManager;
 import android.app.FragmentTransaction;
 
 import android.support.v4.app.FragmentActivity;
@@ -16,12 +18,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends FragmentActivity implements TabListener, CalculateFragment.SendData {
+
+
+public class MainActivity extends FragmentActivity implements TabListener, CalculateFragment.DataMessenger {
 
 	private TabsPagerAdapter tabsPagerAdapter;
 	private ViewPager viewPager;
 	private ActionBar actionBar;
 	private String[] tabs = {"Calculate", "Compare"};
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,7 +42,9 @@ public class MainActivity extends FragmentActivity implements TabListener, Calcu
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		for(String name : tabs) {
-			actionBar.addTab(actionBar.newTab().setText(name).setTabListener(this));
+			Tab newTab = actionBar.newTab().setText(name).setTabListener(this);
+			newTab.setTag(name);
+			actionBar.addTab(newTab);
 		}
 		
 		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -54,6 +62,8 @@ public class MainActivity extends FragmentActivity implements TabListener, Calcu
 			}		
 			
 		});
+		
+
 	}
 
 	@Override
@@ -93,12 +103,14 @@ public class MainActivity extends FragmentActivity implements TabListener, Calcu
 	}
 
 	@Override
-	public void saveData(String[] data) {
-		CompareFragment comparison = (CompareFragment) 
-				getSupportFragmentManager().findFragmentById(R.id.compare_fragment);
-		comparison.addData(data);
+	public void sendData(String[] data) {
+		CompareFragment compare = (CompareFragment)tabsPagerAdapter.getItem(1);
+		compare.addData(data, this);		
 		
-	}	
+	}
+
+
+
 	
 }
 	

@@ -1,63 +1,57 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/compare_fragment"
+    android:id="@+id/compare_table"
     android:stretchColumns="1" >
 
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:showDividers="beginning|middle|end" >
+        android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/amountHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:lines="2"
-            android:text="Amount Owed"
+            android:gravity="center"
+            android:text="@string/amountHeader"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/interestHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Small Text"
+            android:gravity="center"
+            android:text="@string/interestHeader"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/paymentHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Small Text"
+            android:gravity="center"
+            android:text="@string/paymentHeader"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/monthsToPayHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Small Text"
+            android:gravity="center"
+            android:text="@string/monthsToPayHeader"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/interestPaidHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Delete Row"
+            android:gravity="center"
+            android:text="@string/interestPaidHeader"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </TableRow>

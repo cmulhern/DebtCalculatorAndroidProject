@@ -1,5 +1,6 @@
 package theDebtCalculatorAdapter;
 
+import cj.the.debt.calculator.R;
 import theDebtCalculator.CalculateFragment;
 import theDebtCalculator.CompareFragment;
 import android.support.v4.app.Fragment;
@@ -7,10 +8,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter{
-
+	CalculateFragment calculate;
+	CompareFragment compare;
 	public TabsPagerAdapter(FragmentManager fm) {
 		super(fm);
-		
+
 	}
 
 	@Override

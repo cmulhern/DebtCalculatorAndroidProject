@@ -17,11 +17,17 @@ import android.widget.TextView;
 
 public class CalculateFragment extends Fragment  {
 	
-	SendData dataMessanger;
+    private Double months;
+	private Double interestPayment;
+	private DataMessenger messenger;
+	
+	public interface DataMessenger {
+		public void sendData(String[] data);
+	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, 
 			Bundle savedInstanceState) {
-		LinearLayout rootView = (LinearLayout)inflater.inflate(R.layout.fragment_calculate, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_calculate, container, false);
 		
 		final TextView answer = (TextView) rootView.findViewById(R.id.answer);
 		final EditText amountField = (EditText) rootView.findViewById(R.id.debt1_amount);
@@ -51,9 +57,10 @@ public class CalculateFragment extends Fragment  {
 					else {
 						double num = Math.log(1-((amount/monthly)*(interest/12)));
 						double denom = Math.log(1+(interest/12));
-						double months = -1.0 * (num/denom);
-						double interestPayment = (monthly * months) - amount;
-						answerText = "You will pay your debt off in " + Math.ceil(months) + " months. You will pay " + format.format(interestPayment) + " in interest.";
+						months = -1.0 * (num/denom);
+						interestPayment = (monthly * months) - amount;
+						months = Math.ceil(months);
+						answerText = "You will pay your debt off in " + months + " months. You will pay " + format.format(interestPayment) + " in interest.";
 						saveButton.setVisibility(View.VISIBLE);
 					}
 				}
@@ -73,24 +80,29 @@ public class CalculateFragment extends Fragment  {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				String[] data = {amountField.getText().toString(), interestField.getText().toString(), monthlyField.getText().toString(),
+						months.toString(), format.format(interestPayment).toString() }; 
+				if(messenger != null) {
+					messenger.sendData(data);
+				}
 			}
 			
 		});
 		return rootView;
 	}
 	
+	
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
+		
 		try {
-			dataMessanger = (SendData) activity;
-		}	catch(ClassCastException e) {
-			throw new ClassCastException(activity.toString() + "must implement SendData");
+			messenger = (DataMessenger) activity;
+		}
+		catch (ClassCastException e) {
+			throw new ClassCastException(activity.toString() + 
+					" must implement DataMessenger");
 		}
 	}
-	
-	public interface SendData {
-		public void saveData(String[] data);
-	}
+
+
 }
