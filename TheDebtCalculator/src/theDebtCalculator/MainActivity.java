@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends FragmentActivity implements TabListener {
+public class MainActivity extends FragmentActivity implements TabListener, CalculateFragment.SendData {
 
 	private TabsPagerAdapter tabsPagerAdapter;
 	private ViewPager viewPager;
@@ -90,6 +90,14 @@ public class MainActivity extends FragmentActivity implements TabListener {
 	@Override
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 		// Do nothing
+	}
+
+	@Override
+	public void saveData(String[] data) {
+		CompareFragment comparison = (CompareFragment) 
+				getSupportFragmentManager().findFragmentById(R.id.compare_fragment);
+		comparison.addData(data);
+		
 	}	
 	
 }

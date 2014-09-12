@@ -13,5 +13,9 @@ public class CompareFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_compare, container, false);
 		return rootView;
 	}
+	
+	public void addData(String[] data) {
+		
+	}
 
 }

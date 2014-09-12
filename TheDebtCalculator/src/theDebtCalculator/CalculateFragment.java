@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 import cj.the.debt.calculator.R;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,7 +15,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class CalculateFragment extends Fragment {
+public class CalculateFragment extends Fragment  {
+	
+	SendData dataMessanger;
+	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, 
 			Bundle savedInstanceState) {
 		LinearLayout rootView = (LinearLayout)inflater.inflate(R.layout.fragment_calculate, container, false);
@@ -42,7 +46,7 @@ public class CalculateFragment extends Fragment {
 					
 					if(amount * interest > monthly) {
 						answerText = "Your monthly payment is too low! Your total owed grows by " + format.format((amount*interest) - monthly) +" every month!";
-						answer.setVisibility(View.GONE);
+						saveButton.setVisibility(View.GONE);
 					}
 					else {
 						double num = Math.log(1-((amount/monthly)*(interest/12)));
@@ -77,8 +81,16 @@ public class CalculateFragment extends Fragment {
 		return rootView;
 	}
 	
-	public void calculate(View view) {
-		
-
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		try {
+			dataMessanger = (SendData) activity;
+		}	catch(ClassCastException e) {
+			throw new ClassCastException(activity.toString() + "must implement SendData");
+		}
+	}
+	
+	public interface SendData {
+		public void saveData(String[] data);
 	}
 }
